@@ -1,0 +1,7 @@
+<div class="wrapper">
+    <div class="placesTypes">
+        <div class="item" (click)="onPlaceTypeSelect(type)" *ngFor="let type of placesTypes">
+            <img width="50" height="50" [src]='"../../../../../assets/images/"+type.attachment' [alt]="type.placeType_an"/>
+        </div>
+    </div>
+</div>

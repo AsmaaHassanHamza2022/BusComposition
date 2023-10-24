@@ -12,12 +12,16 @@ import { DialogModule } from 'primeng/dialog';
 import { BusCompositionFormComponent } from './components/bus-composition-form/bus-composition-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'src/app/custom-forms/custom-forms.module';
-
+import { InputValidationDirective } from 'src/app/Shared/directives/input-validation.directive';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { SeatsCompositionsComponent } from './components/seats-compositions/seats-compositions.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     BusCompositionComponent,
     WorkingTabelComponent,
-    BusCompositionFormComponent
+    BusCompositionFormComponent,
+    SeatsCompositionsComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +32,10 @@ import { CustomFormsModule } from 'src/app/custom-forms/custom-forms.module';
     TranslateModule,
     TableModule,
     DialogModule,
-    CustomFormsModule
+    CustomFormsModule,
+    InputValidationDirective,
+    ConfirmPopupModule,
+    HttpClientModule
 
   ],
   providers:[BusCompositionsService]

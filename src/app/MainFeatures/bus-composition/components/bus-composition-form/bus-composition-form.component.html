@@ -2,7 +2,7 @@
    <div class="form-container">
     <div class="form-field">
       <label htmlFor="username">{{'MainModules.BusComposition.BusTypeAr' |translate}}</label>
-      <app-text-input formControlName="busTypeAr"></app-text-input>
+      <app-text-input [appInputValidation]="'required'" formControlName="busTypeAr"></app-text-input>
     </div>
     <div class="form-field">
       <label htmlFor="username">{{'MainModules.BusComposition.BusTypeEn' |translate}}</label>
@@ -31,6 +31,7 @@
       <app-custom-btn [btnConfig]="saveBtnConfig">{{'MainModules.BusComposition.confirmation' |translate}}</app-custom-btn>
 
     </div>
-
    </div>
 </form>
+
+<p-confirmPopup></p-confirmPopup>

@@ -50,7 +50,9 @@
 
 <div class="add-new-bus-composition">
     <p-dialog [header]="'MainModules.BusComposition.addNewBusType'|translate" [(visible)]="visible" [maximizable]="true" [closable]="false" [breakpoints]="{ '960px': '75vw' }" [style]="{ width: '90vw' }" [draggable]="false" [resizable]="true">
-       <app-bus-composition-form></app-bus-composition-form>
+       <app-bus-composition-form  (OnCompeletBusData)="onOpenBusPlaces($event)" ></app-bus-composition-form>
+
+       <app-seats-compositions [BusConfigration]="busConfigration" *ngIf="showBusPlaces"></app-seats-compositions>
         <div class="cancle-btn">
             <app-custom-btn [btnConfig]="cancleBtnConfig">{{'MainModules.BusComposition.cancelation' |translate}}</app-custom-btn>
         </div>

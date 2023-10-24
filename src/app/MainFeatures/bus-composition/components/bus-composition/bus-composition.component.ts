@@ -11,6 +11,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   
 })
 export class BusCompositionComponent {
+  showBusPlaces:boolean=false;
+  busConfigration!:BusCompositionItem;
   newBusBtnConfig: BtnConfig = {
     action:()=>this.showDialog(),
     type: BtnTypes.Adding,
@@ -28,5 +30,10 @@ export class BusCompositionComponent {
   }
   hideDialog(){
     this.visible=false;
+  }
+  onOpenBusPlaces(data:BusCompositionItem){
+    this.busConfigration=data;
+    this.showBusPlaces=true;
+
   }
 }

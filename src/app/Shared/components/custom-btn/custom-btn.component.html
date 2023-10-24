@@ -1,4 +1,4 @@
-<button [ngClass]="btnClass" (click)="btnConfig.action()">
+<button [ngClass]="btnClass" (click)="btnConfig.action($event)">
     <span *ngIf="btnConfig?.title">{{btnConfig.title}}</span>
     <ng-content></ng-content>
 </button>
