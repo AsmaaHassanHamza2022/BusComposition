@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LanguageService } from './core/language.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'BusComposition';
+  constructor(private languageLang:LanguageService) {
+    this.languageLang.changeLanguage('ar');
+  }
 }

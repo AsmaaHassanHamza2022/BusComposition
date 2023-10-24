@@ -1,0 +1,27 @@
+{
+    "Layout":{
+        "MainData":" البيانات الرئيسية",
+        "BusComposition":"أنواع وتركيبة الحافلة"
+    },
+    "MainModules":{
+        "BusComposition":{
+            "addBtn":"إضافة حافلة جديده",
+            "busTypeAr":"نوع الحافلة بالعربية",
+            "busTypeEn":"نوع الحافلة بالانجليزية",
+            "seatsCount":"عدد المقاعد",
+            "rowsCount":"عدد الصفوف",
+            "columnsCount":"عدد الاعمدة",
+            "levelCount":"عدد المستويات",
+            "addNewBusType":"إضافة نوع حافلة جديد",
+            "cancelation":"الغاء",
+            "confirmation":"تأكيد",
+            "BusTypeAr":"نوع المركبة بالعربية",
+            "BusTypeEn":"نوع المركبة بالانجليزية",
+            "Numberofrows": "عدد الصفوف",
+            "Numberofcolumns":"عدد الأعمدة",
+            "Numberofseats":"عدد المقاعد",
+            "Numberoflevels":"عدد المستويات"
+        }
+
+    }
+}

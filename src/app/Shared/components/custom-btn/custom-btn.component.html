@@ -1,0 +1,4 @@
+<button [ngClass]="btnClass" (click)="btnConfig.action()">
+    <span *ngIf="btnConfig?.title">{{btnConfig.title}}</span>
+    <ng-content></ng-content>
+</button>

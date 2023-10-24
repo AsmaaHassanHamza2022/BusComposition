@@ -1,0 +1,58 @@
+<div class="container">
+  <app-custom-btn [btnConfig]="newBusBtnConfig">
+    + {{ "MainModules.BusComposition.addBtn" | translate }}
+  </app-custom-btn>
+</div>
+<div class="content-table">
+  <div class="card">
+    <p-table [value]="BusCompositions" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="busTypeAr" style="width: 16.6%">
+            {{ "MainModules.BusComposition.busTypeAr" | translate }}
+            <p-sortIcon field="code"></p-sortIcon>
+          </th>
+          <th pSortableColumn="busTypeEn" style="width: 18.6%">
+            {{ "MainModules.BusComposition.busTypeEn" | translate }}
+            <p-sortIcon field="name"></p-sortIcon>
+          </th>
+          <th pSortableColumn="seatsCount" style="width: 16.6%">
+            {{ "MainModules.BusComposition.seatsCount" | translate }}
+            <p-sortIcon field="category"></p-sortIcon>
+          </th>
+          <th pSortableColumn="rowsCount" style="width: 15.6%">
+            {{ "MainModules.BusComposition.rowsCount" | translate }}
+            <p-sortIcon field="quantity"></p-sortIcon>
+          </th>
+          <th pSortableColumn="columnsCount" style="width: 15.6%">
+            {{ "MainModules.BusComposition.columnsCount" | translate }}
+            <p-sortIcon field="quantity"></p-sortIcon>
+          </th>
+          <th pSortableColumn="levelCount" style="width: 16.6%">
+            {{ "MainModules.BusComposition.levelCount" | translate }}
+            <p-sortIcon field="price"></p-sortIcon>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-BusComposition>
+        <tr>
+          <td>{{ BusComposition.busTypeAr }}</td>
+          <td>{{ BusComposition.busTypeEn }}</td>
+          <td>{{ BusComposition.seatsCount }}</td>
+          <td>{{ BusComposition.rowsCount }}</td>
+          <td>{{ BusComposition.columnsCount }}</td>
+          <td>{{ BusComposition.levelCount }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<div class="add-new-bus-composition">
+    <p-dialog [header]="'MainModules.BusComposition.addNewBusType'|translate" [(visible)]="visible" [maximizable]="true" [closable]="false" [breakpoints]="{ '960px': '75vw' }" [style]="{ width: '90vw' }" [draggable]="false" [resizable]="true">
+       <app-bus-composition-form></app-bus-composition-form>
+        <div class="cancle-btn">
+            <app-custom-btn [btnConfig]="cancleBtnConfig">{{'MainModules.BusComposition.cancelation' |translate}}</app-custom-btn>
+        </div>
+    </p-dialog>
+</div>

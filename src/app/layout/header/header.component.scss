@@ -1,0 +1,16 @@
+header{
+    border-bottom:1px solid #ddd ;
+    padding:10px 0px;
+   
+    .container{
+        width:80%;
+        margin:0px auto;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        .actions{
+            font-weight: bold;
+        }
+
+    }
+}

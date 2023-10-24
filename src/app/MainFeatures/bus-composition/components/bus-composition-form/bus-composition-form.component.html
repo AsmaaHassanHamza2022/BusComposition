@@ -1,0 +1,36 @@
+<form [formGroup]="busCompositionForm">
+   <div class="form-container">
+    <div class="form-field">
+      <label htmlFor="username">{{'MainModules.BusComposition.BusTypeAr' |translate}}</label>
+      <app-text-input formControlName="busTypeAr"></app-text-input>
+    </div>
+    <div class="form-field">
+      <label htmlFor="username">{{'MainModules.BusComposition.BusTypeEn' |translate}}</label>
+      <app-text-input formControlName="busTypeEn"></app-text-input>
+    </div>
+
+    <div class="form-field">
+      <label htmlFor="username">{{'MainModules.BusComposition.Numberofrows' |translate}}</label>
+      <app-number-input formControlName="rowsCount"></app-number-input>
+    </div>
+
+    <div class="form-field">
+      <label htmlFor="username">{{'MainModules.BusComposition.Numberofcolumns' |translate}}</label>
+      <app-number-input formControlName="columnCount"></app-number-input>
+    </div>
+
+    <div class="form-field">
+      <label htmlFor="username">{{'MainModules.BusComposition.Numberofseats' |translate}}</label>
+      <app-number-input formControlName="seatsCount"></app-number-input>
+    </div>
+    <div class="form-field">
+      <label htmlFor="username">{{'MainModules.BusComposition.Numberoflevels' |translate}}</label>
+      <app-number-input formControlName="levelCount"></app-number-input>
+    </div>
+    <div class="action">
+      <app-custom-btn [btnConfig]="saveBtnConfig">{{'MainModules.BusComposition.confirmation' |translate}}</app-custom-btn>
+
+    </div>
+
+   </div>
+</form>

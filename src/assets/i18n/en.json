@@ -1,0 +1,14 @@
+{
+    "Layout":{
+        "MainData":"Main Data",
+        "BusComposition":"Bus Composition"
+    },
+    "MainModules":{
+        "BusComposition":{
+            "addBtn":"Add New Bus"
+
+
+        }
+
+    }
+}

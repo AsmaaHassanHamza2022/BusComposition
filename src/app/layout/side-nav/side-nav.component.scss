@@ -1,0 +1,13 @@
+@import '../../../assets/styles/helpers/mixin.scss';
+aside{
+    @include rtl(border-right, 1px solid #ddd, unset);
+    @include rtl(border-left,unset ,  1px solid #ddd);
+    // margin:0px 10px;
+    height:calc(100vh - 145px);
+
+    ul{
+        li{
+            cursor: pointer;
+        }
+    }
+}

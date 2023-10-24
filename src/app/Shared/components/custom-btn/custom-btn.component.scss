@@ -1,0 +1,25 @@
+button {
+  padding: 8px 20px;
+  border: 1px solid #ddd;
+  color: #242020;
+  cursor: pointer;
+  background-color: #fff;
+
+  &.Confirmation {
+    border: 1px solid #49e670;
+    color:#49e670 ;
+  }
+  &.Cancelation {
+    border: 1px solid #fe3838;
+    color:#fe3838 ;
+
+  }
+  &.Saving {
+    border: 1px solid #28a17b;
+    color:#28a17b ;
+  }
+  &.Adding {
+    border: 1px solid #5ea2dd;
+    color:#5ea2dd ;
+  }
+}
