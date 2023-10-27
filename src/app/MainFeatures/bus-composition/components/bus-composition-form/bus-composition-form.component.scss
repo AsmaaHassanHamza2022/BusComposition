@@ -9,6 +9,7 @@
   }
   .form-field {
     width: 15%;
+    min-height: 120px;
     @media (max-width: 992px) {
       width: 90%;
     }
@@ -35,6 +36,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 40px;
+    // margin-top: 40px;
   }
+}
+.cancle-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

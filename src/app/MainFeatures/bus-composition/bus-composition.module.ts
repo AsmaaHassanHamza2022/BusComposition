@@ -9,6 +9,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TableModule } from 'primeng/table';
 import { BusCompositionsService } from './Services/bus-compositions.service';
 import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+
 import { BusCompositionFormComponent } from './components/bus-composition-form/bus-composition-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'src/app/custom-forms/custom-forms.module';
@@ -16,12 +18,15 @@ import { InputValidationDirective } from 'src/app/Shared/directives/input-valida
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { SeatsCompositionsComponent } from './components/seats-compositions/seats-compositions.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ValiationErrorMessagesComponent } from 'src/app/Shared/components/valiation-error-messages/valiation-error-messages.component';
+import { GetLevelArrPipe } from './Pipes/get-level-arr.pipe';
 @NgModule({
   declarations: [
     BusCompositionComponent,
     WorkingTabelComponent,
     BusCompositionFormComponent,
-    SeatsCompositionsComponent
+    SeatsCompositionsComponent,
+    GetLevelArrPipe
   ],
   imports: [
     CommonModule,
@@ -35,7 +40,10 @@ import { HttpClientModule } from '@angular/common/http';
     CustomFormsModule,
     InputValidationDirective,
     ConfirmPopupModule,
-    HttpClientModule
+    HttpClientModule,
+    ValiationErrorMessagesComponent,
+    ToastModule
+    
 
   ],
   providers:[BusCompositionsService]

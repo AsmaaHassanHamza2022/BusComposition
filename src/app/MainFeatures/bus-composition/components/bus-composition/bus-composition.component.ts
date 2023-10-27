@@ -17,10 +17,7 @@ export class BusCompositionComponent {
     action:()=>this.showDialog(),
     type: BtnTypes.Adding,
   };
-  cancleBtnConfig: BtnConfig = {
-    action:()=>this.hideDialog(),
-    type: BtnTypes.Cancelation,
-  };
+  
   BusCompositions: BusCompositionItem[] = [];
   visible: boolean = false;
 
@@ -28,12 +25,11 @@ export class BusCompositionComponent {
   showDialog() {
     this.visible = true;
   }
-  hideDialog(){
-    this.visible=false;
-  }
+  
   onOpenBusPlaces(data:BusCompositionItem){
     this.busConfigration=data;
     this.showBusPlaces=true;
+    
 
   }
 }

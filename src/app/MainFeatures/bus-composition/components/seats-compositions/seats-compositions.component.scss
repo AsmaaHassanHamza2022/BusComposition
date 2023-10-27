@@ -1,16 +1,77 @@
-.wrapper{
-    .placesTypes{
-        width:50%;
-        margin: 20px auto;
+.wrapper {
+  .placesTypes {
+    width: 50%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .item {
+      border: 2px solid #000;
+      border-radius: 8px;
+      &.active {
+        border-color: rgb(92, 142, 92);
+      }
+      img {
+        padding: 10px;
+      }
+    }
+  }
+  .content {
+    display: flex;
+    justify-content: space-between;
+    .bus-levels{
+      width: 20%;
+      .level{
+        width:100px;
+        height: 50px;
+        border: 1px solid #ddd;
+        text-align: center;
+        margin: 10px 0px;
+        padding: 5px 10px;
+      }
+    }
+    .grid{
+      width: 60%;
+      .bus-grid {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        .item{
-          border:2px solid #000;
+        justify-content: space-between;
+        .bus-place {
+          border: 2px solid rgb(141, 117, 11);
           border-radius: 8px;
-          img{
-            padding:10px;
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 10px;
+          img {
+            width: 80%;
+            height: 80%;
           }
         }
+      }
     }
+    .passanger-seats-count {
+      width: 20%;
+      .card {
+        width: 100px;
+        height: 50px;
+        border: 1px solid #eee;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0px;
+  }
 }

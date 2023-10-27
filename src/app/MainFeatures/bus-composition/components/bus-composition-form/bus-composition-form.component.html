@@ -1,31 +1,43 @@
+
 <form [formGroup]="busCompositionForm">
    <div class="form-container">
     <div class="form-field">
-      <label htmlFor="username">{{'MainModules.BusComposition.BusTypeAr' |translate}}</label>
-      <app-text-input [appInputValidation]="'required'" formControlName="busTypeAr"></app-text-input>
+      <label (click)="logForm()" htmlFor="username">{{'MainModules.BusComposition.busTypeAr' |translate}}</label>
+      <app-text-input  formControlName="busTypeAr"></app-text-input>
+      <app-valiation-error-messages [controlName]="f('busTypeAr')"></app-valiation-error-messages>
     </div>
     <div class="form-field">
-      <label htmlFor="username">{{'MainModules.BusComposition.BusTypeEn' |translate}}</label>
-      <app-text-input formControlName="busTypeEn"></app-text-input>
+      <label htmlFor="username">{{'MainModules.BusComposition.busTypeEn' |translate}}</label>
+      <app-text-input  formControlName="busTypeEn"></app-text-input>
+      <app-valiation-error-messages [controlName]="f('busTypeEn')"></app-valiation-error-messages>
+
     </div>
 
     <div class="form-field">
       <label htmlFor="username">{{'MainModules.BusComposition.Numberofrows' |translate}}</label>
-      <app-number-input formControlName="rowsCount"></app-number-input>
+      <app-number-input  formControlName="rowCount"></app-number-input>
+      <app-valiation-error-messages [controlName]="f('rowCount')"></app-valiation-error-messages>
+
     </div>
 
     <div class="form-field">
       <label htmlFor="username">{{'MainModules.BusComposition.Numberofcolumns' |translate}}</label>
-      <app-number-input formControlName="columnCount"></app-number-input>
+      <app-number-input  formControlName="columnCount"></app-number-input>
+      <app-valiation-error-messages [controlName]="f('columnCount')"></app-valiation-error-messages>
+
     </div>
 
     <div class="form-field">
       <label htmlFor="username">{{'MainModules.BusComposition.Numberofseats' |translate}}</label>
       <app-number-input formControlName="seatsCount"></app-number-input>
+      <app-valiation-error-messages [controlName]="f('seatsCount')"></app-valiation-error-messages>
+
     </div>
     <div class="form-field">
       <label htmlFor="username">{{'MainModules.BusComposition.Numberoflevels' |translate}}</label>
       <app-number-input formControlName="levelCount"></app-number-input>
+      <app-valiation-error-messages [controlName]="f('levelCount')"></app-valiation-error-messages>
+
     </div>
     <div class="action">
       <app-custom-btn [btnConfig]="saveBtnConfig">{{'MainModules.BusComposition.confirmation' |translate}}</app-custom-btn>
@@ -33,5 +45,9 @@
     </div>
    </div>
 </form>
+
+<div class="cancle-btn" *ngIf="showCancleBtn">
+  <app-custom-btn [btnConfig]="cancleBtnConfig">{{'MainModules.BusComposition.cancelation' |translate}}</app-custom-btn>
+</div>
 
 <p-confirmPopup></p-confirmPopup>

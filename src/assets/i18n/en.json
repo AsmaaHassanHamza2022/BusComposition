@@ -1,11 +1,30 @@
 {
+    "shared":{
+        "yes":"Yes",
+        "no":"No"
+    },
     "Layout":{
         "MainData":"Main Data",
         "BusComposition":"Bus Composition"
     },
     "MainModules":{
         "BusComposition":{
-            "addBtn":"Add New Bus"
+            "addBtn":"Add New Bus",
+            "busTypeAr":"Bus Type Ar",
+            "busTypeEn":"Bus Type En",
+            "seatsCount":"Seats Count",
+            "rowsCount":"Rows Count",
+            "columnsCount":"Columns Count",
+            "levelCount":"Level Count",
+            "addNewBusType":"Add New BusType",
+            "cancelation":"Cancelation",
+            "confirmation":"Confirmation",
+            "Numberofrows": "Number of rows",
+            "Numberofcolumns":"Number of columns",
+            "Numberofseats":"Number of seats",
+            "Numberoflevels":"Number of levels",
+            "save":"save",
+            "confirmationMessage":"Are you sure that you want to proceed"
 
 
         }

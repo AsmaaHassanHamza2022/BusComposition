@@ -1,4 +1,8 @@
 {
+    "shared":{
+        "yes":"نعم",
+        "no":"لا"
+    },
     "Layout":{
         "MainData":" البيانات الرئيسية",
         "BusComposition":"أنواع وتركيبة الحافلة"
@@ -15,12 +19,13 @@
             "addNewBusType":"إضافة نوع حافلة جديد",
             "cancelation":"الغاء",
             "confirmation":"تأكيد",
-            "BusTypeAr":"نوع المركبة بالعربية",
-            "BusTypeEn":"نوع المركبة بالانجليزية",
             "Numberofrows": "عدد الصفوف",
             "Numberofcolumns":"عدد الأعمدة",
             "Numberofseats":"عدد المقاعد",
-            "Numberoflevels":"عدد المستويات"
+            "Numberoflevels":"عدد المستويات",
+            "save":"حفظ",
+            "confirmationMessage":"هل تريد اتمام العمليه بالبيانات  المدخلة؟"
+            
         }
 
     }
