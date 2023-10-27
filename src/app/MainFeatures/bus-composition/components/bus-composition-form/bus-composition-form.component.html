@@ -40,7 +40,9 @@
 
     </div>
     <div class="action">
-      <app-custom-btn [btnConfig]="saveBtnConfig">{{'MainModules.BusComposition.confirmation' |translate}}</app-custom-btn>
+      <app-custom-btn [btnConfig]="saveBtnConfig">
+        {{showCancleBtn ? ('MainModules.BusComposition.confirmation' |translate) :
+        'MainModules.BusComposition.update' |translate}}</app-custom-btn>
 
     </div>
    </div>

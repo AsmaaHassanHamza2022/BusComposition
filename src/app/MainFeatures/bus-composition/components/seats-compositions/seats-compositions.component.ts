@@ -87,7 +87,10 @@ export class SeatsCompositionsComponent implements OnInit, OnChanges {
 
   onAddPlaceTypeToBusSeat(rowIndex: number, columnIndex: number) {
     if (this.selectedPlacetype) {
-      if (!this.checkPassangerSeat()) return;
+      if (this.selectedPlacetype.is_seat) {
+        if (!this.checkPassangerSeat()) return;
+      }
+      
       this.busPlaces[rowIndex][columnIndex] = this.selectedPlacetype;
     } else {
       this.messageService.add({
@@ -107,10 +110,7 @@ export class SeatsCompositionsComponent implements OnInit, OnChanges {
       });
       return false;
     }
-    if (this.selectedPlacetype.is_seat) {
-      this.passangerSeatsCount--;
-    }
-
+    this.passangerSeatsCount--;
     return true;
   }
 
