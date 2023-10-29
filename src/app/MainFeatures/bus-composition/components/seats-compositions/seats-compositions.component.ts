@@ -12,6 +12,7 @@ import { BusCompositionItem, IPlacesTypes } from '../../interfaces';
 import { BtnConfig } from 'src/app/Shared/components/interfaces';
 import { BtnTypes } from 'src/app/Shared/components/custom-btn/enums';
 import { MessageService } from 'primeng/api';
+import { GetLevelArrPipe } from '../../Pipes/get-level-arr.pipe';
 
 type NewType = BtnConfig;
 
@@ -19,7 +20,7 @@ type NewType = BtnConfig;
   selector: 'app-seats-compositions',
   templateUrl: './seats-compositions.component.html',
   styleUrls: ['./seats-compositions.component.scss'],
-  providers: [MessageService],
+  providers: [MessageService, GetLevelArrPipe],
 })
 export class SeatsCompositionsComponent implements OnInit, OnChanges {
   @Input() busConfigration!: BusCompositionItem;
@@ -28,6 +29,7 @@ export class SeatsCompositionsComponent implements OnInit, OnChanges {
   busPlaces: IPlacesTypes[][] = [];
   selectedPlacetype!: IPlacesTypes;
   passangerSeatsCount: number = 0;
+  BusLevelsPlaces = new Map();
   saveBtnConfig: BtnConfig = {
     action: () => {
       this.saveBusComposition();
@@ -38,19 +40,39 @@ export class SeatsCompositionsComponent implements OnInit, OnChanges {
     action: () => this.hideDialog(),
     type: BtnTypes.Cancelation,
   };
+  selectedLevel: number = 0;
   constructor(
     private busService: BusCompositionsService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private getLevelsArrPipe: GetLevelArrPipe
   ) {}
   ngOnChanges(changes: SimpleChanges): void {
     if (this.busConfigration) {
-      this.drawInitGrid();
+      this.passangerSeatsCount = this.isMultiLevelBus
+        ? this.busConfigration.seatsCount * this.busConfigration.levelCount
+        : this.busConfigration.seatsCount;
+
+      // I need to map old busplace from previous level to new level arrays
+      if (this.busConfigration.levelCount >= 2) {
+        this.initMultiLevelGrid(true);
+      } else {
+        this.initMultiLevelGrid();
+      }
     }
   }
   ngOnInit(): void {
     this.busService.getPlacesTypes().subscribe((res) => {
       this.placesTypes = res;
     });
+    if (this.busConfigration) {
+      this.initMultiLevelGrid();
+      // I decided To reflect all Data In Map regaredless level count :) single point of checking
+      // if (this.isMultiLevelBus) {
+      //   this.initMultiLevelGrid();
+      // } else {
+      //   this.busPlaces = [...this.drawInitGrid()];
+      // }
+    }
   }
 
   hideDialog() {
@@ -58,7 +80,6 @@ export class SeatsCompositionsComponent implements OnInit, OnChanges {
   }
   onPlaceTypeSelect(type: IPlacesTypes) {
     this.selectedPlacetype = type;
-    console.log(type);
   }
 
   createArray2Dim() {
@@ -70,19 +91,40 @@ export class SeatsCompositionsComponent implements OnInit, OnChanges {
     return array;
   }
 
-  drawInitGrid() {
-    this.passangerSeatsCount = this.busConfigration.seatsCount;
-    this.busPlaces = this.createArray2Dim();
+  drawInitGrid(): IPlacesTypes[][] {
+    let busPlaces = this.createArray2Dim();
     for (let row = 0; row < this.busConfigration.rowCount; row++) {
       for (
         let column = 0;
         column < this.busConfigration.columnCount;
         column++
       ) {
-        this.busPlaces[row][column] = {} as IPlacesTypes;
+        busPlaces[row][column] = {} as IPlacesTypes;
       }
     }
-    console.log('grid is drawing here ................', this.busPlaces);
+    return busPlaces;
+  }
+
+  initMultiLevelGrid(hasPerviousLevel: boolean = false) {
+    let temp = new Map();
+    this.getLevelsArrPipe
+      .transform(this.busConfigration.levelCount)
+      .forEach((level: number) => {
+        temp.set(level, this.drawInitGrid());
+      });
+
+      if (hasPerviousLevel) {
+        this.UpgradBusLevels(temp);
+      }else{
+        this.BusLevelsPlaces=temp;
+      }
+
+      this.drawlevelBusPlaces(1);
+  }
+
+  drawlevelBusPlaces(levelNumber: number) {
+    this.selectedLevel = levelNumber;
+    this.busPlaces = this.BusLevelsPlaces.get(levelNumber);
   }
 
   onAddPlaceTypeToBusSeat(rowIndex: number, columnIndex: number) {
@@ -90,7 +132,7 @@ export class SeatsCompositionsComponent implements OnInit, OnChanges {
       if (this.selectedPlacetype.is_seat) {
         if (!this.checkPassangerSeat()) return;
       }
-      
+
       this.busPlaces[rowIndex][columnIndex] = this.selectedPlacetype;
     } else {
       this.messageService.add({
@@ -115,6 +157,28 @@ export class SeatsCompositionsComponent implements OnInit, OnChanges {
   }
 
   saveBusComposition() {
-    console.log('Finish Process', this.busPlaces);
+    console.log('Finish Process', this.BusLevelsPlaces);
+
+    // if (this.isMultiLevelBus) {
+    //   console.log('Finish Process', this.BusLevelsPlaces);
+    //   return;
+    // }
+    // console.log('Finish Process', this.busPlaces);
+  }
+
+  UpgradBusLevels(newMap:any) {
+    let perviousLevelKeys=Array.from(this.BusLevelsPlaces.keys());
+    perviousLevelKeys.forEach((key)=>{
+      console.log((this.BusLevelsPlaces as any).get(key))
+      //TODO using any not correct here bit I use it to bypass issue
+      newMap.set(key,(this.BusLevelsPlaces as any).get(key))
+
+    })
+    this.BusLevelsPlaces=newMap;
+    
+  }
+
+  get isMultiLevelBus() {
+    return this.busConfigration.levelCount > 1;
   }
 }

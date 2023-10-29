@@ -16,34 +16,41 @@
   </div>
   <div class="content">
     <div class="bus-levels">
-       <div class="level" *ngFor=" let level of busConfigration.levelCount | getLevelArr" >
-       <p>{{"Level " + level}}</p>
+      <div
+        class="level"
+        [class.active]="i == selectedLevel - 1"
+        (click)="drawlevelBusPlaces(level)"
+        *ngFor="
+          let level of busConfigration.levelCount | getLevelArr;
+          let i = index
+        "
+      >
+        <p>{{ "Level " + level }}</p>
+      </div>
     </div>
-    </div>
-     <div class="grid">
-        <div class="bus-grid" *ngFor="let row of busPlaces; let rowIndex = index">
-            <div
-              class="bus-place"
-              (click)="onAddPlaceTypeToBusSeat(rowIndex, columnIndex)"
-              *ngFor="let item of row; let columnIndex = index"
-            >
-              <img
-                *ngIf="item?.attachment"
-                [src]="'../../../../../assets/images/' + item?.attachment"
-                [alt]="item?.placeType_an"
-              />
-            </div>
-          </div>
-     </div>
-
-      <div class="passanger-seats-count">
-        <div class="card">
-          <p>{{ passangerSeatsCount }}</p>
+    <div class="grid">
+      <div class="bus-grid" *ngFor="let row of busPlaces; let rowIndex = index">
+        <div
+          class="bus-place"
+          (click)="onAddPlaceTypeToBusSeat(rowIndex, columnIndex)"
+          *ngFor="let item of row; let columnIndex = index"
+        >
+          <img
+            *ngIf="item?.attachment"
+            [src]="'../../../../../assets/images/' + item?.attachment"
+            [alt]="item?.placeType_an"
+          />
         </div>
       </div>
-  
+    </div>
+
+    <div class="passanger-seats-count">
+      <h4>Passanger Count</h4>
+      <div class="card">
+        <p class="count">{{ passangerSeatsCount }}</p>
+      </div>
+    </div>
   </div>
-  
 
   <div class="actions">
     <app-custom-btn [btnConfig]="saveBtnConfig">{{

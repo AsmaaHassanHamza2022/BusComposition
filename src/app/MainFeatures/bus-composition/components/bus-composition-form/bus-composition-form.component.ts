@@ -47,7 +47,7 @@ export class BusCompositionFormComponent implements OnInit {
       rowCount: [3, [Validators.required ,Validators.max(5)]],
       columnCount: [4, [Validators.required, Validators.max(20)]],
       seatsCount: [7],
-      levelCount: ['',Validators.max(3)],
+      levelCount: [1,Validators.max(3)],
     });
 
     this.f('rowCount').valueChanges.subscribe(()=>{

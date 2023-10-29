@@ -7,7 +7,7 @@
     align-items: center;
     .item {
       border: 2px solid #000;
-      border-radius: 8px;
+      border-radius: 8px;card
       &.active {
         border-color: rgb(92, 142, 92);
       }
@@ -20,18 +20,25 @@
     display: flex;
     justify-content: space-between;
     .bus-levels{
-      width: 20%;
       .level{
         width:100px;
         height: 50px;
         border: 1px solid #ddd;
-        text-align: center;
         margin: 10px 0px;
         padding: 5px 10px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p{
+          margin: 0;
+        }
+        &.active{
+          border: 2px solid rgb(245, 131, 17);
+        }
       }
     }
     .grid{
-      width: 60%;
       .bus-grid {
         display: flex;
         align-items: center;
@@ -53,7 +60,6 @@
       }
     }
     .passanger-seats-count {
-      width: 20%;
       .card {
         width: 100px;
         height: 50px;
